@@ -1,0 +1,191 @@
+export const LANGUAGES = {
+  'auto-detect': 'Auto-detect',
+  'af': 'Afrikaans',
+  'sq': 'Albanian',
+  'am': 'Amharic',
+  'ar': 'Arabic',
+  'hy': 'Armenian',
+  'as': 'Assamese',
+  'az': 'Azerbaijani',
+  'bn': 'Bangla',
+  'ba': 'Bashkir',
+  'eu': 'Basque',
+  'bs': 'Bosnian',
+  'bg': 'Bulgarian',
+  'yue': 'Cantonese (Traditional)',
+  'ca': 'Catalan',
+  'lzh': 'Chinese (Literary)',
+  'zh-Hans': 'Chinese Simplified',
+  'zh-Hant': 'Chinese Traditional',
+  'hr': 'Croatian',
+  'cs': 'Czech',
+  'da': 'Danish',
+  'prs': 'Dari',
+  'dv': 'Divehi',
+  'nl': 'Dutch',
+  'en': 'English',
+  'et': 'Estonian',
+  'fo': 'Faroese',
+  'fj': 'Fijian',
+  'fil': 'Filipino',
+  'fi': 'Finnish',
+  'fr': 'French',
+  'fr-CA': 'French (Canada)',
+  'gl': 'Galician',
+  'lug': 'Ganda',
+  'ka': 'Georgian',
+  'de': 'German',
+  'el': 'Greek',
+  'gu': 'Gujarati',
+  'ht': 'Haitian Creole',
+  'ha': 'Hausa',
+  'he': 'Hebrew',
+  'hi': 'Hindi',
+  'mww': 'Hmong Daw',
+  'hu': 'Hungarian',
+  'is': 'Icelandic',
+  'ig': 'Igbo',
+  'id': 'Indonesian',
+  'ikt': 'Inuinnaqtun',
+  'iu': 'Inuktitut',
+  'iu-Latn': 'Inuktitut (Latin)',
+  'ga': 'Irish',
+  'it': 'Italian',
+  'ja': 'Japanese',
+  'kn': 'Kannada',
+  'kk': 'Kazakh',
+  'km': 'Khmer',
+  'rw': 'Kinyarwanda',
+  'tlh-Latn': 'Klingon (Latin)',
+  'gom': 'Konkani',
+  'ko': 'Korean',
+  'ku': 'Kurdish (Central)',
+  'kmr': 'Kurdish (Northern)',
+  'ky': 'Kyrgyz',
+  'lo': 'Lao',
+  'lv': 'Latvian',
+  'ln': 'Lingala',
+  'lt': 'Lithuanian',
+  'dsb': 'Lower Sorbian',
+  'mk': 'Macedonian',
+  'mai': 'Maithili',
+  'mg': 'Malagasy',
+  'ms': 'Malay',
+  'ml': 'Malayalam',
+  'mt': 'Maltese',
+  'mr': 'Marathi',
+  'mn-Cyrl': 'Mongolian (Cyrillic)',
+  'mn-Mong': 'Mongolian (Traditional)',
+  'my': 'Myanmar (Burmese)',
+  'mi': 'Māori',
+  'ne': 'Nepali',
+  'nb': 'Norwegian',
+  'nya': 'Nyanja',
+  'or': 'Odia',
+  'ps': 'Pashto',
+  'fa': 'Persian',
+  'pl': 'Polish',
+  'pt': 'Portuguese (Brazil)',
+  'pt-PT': 'Portuguese (Portugal)',
+  'pa': 'Punjabi',
+  'otq': 'Querétaro Otomi',
+  'ro': 'Romanian',
+  'run': 'Rundi',
+  'ru': 'Russian',
+  'sm': 'Samoan',
+  'sr-Cyrl': 'Serbian (Cyrillic)',
+  'sr-Latn': 'Serbian (Latin)',
+  'st': 'Sesotho',
+  'nso': 'Sesotho sa Leboa',
+  'tn': 'Setswana',
+  'sn': 'Shona',
+  'sd': 'Sindhi',
+  'si': 'Sinhala',
+  'sk': 'Slovak',
+  'sl': 'Slovenian',
+  'so': 'Somali',
+  'es': 'Spanish',
+  'sw': 'Swahili',
+  'sv': 'Swedish',
+  'ty': 'Tahitian',
+  'ta': 'Tamil',
+  'tt': 'Tatar',
+  'te': 'Telugu',
+  'th': 'Thai',
+  'bo': 'Tibetan',
+  'ti': 'Tigrinya',
+  'to': 'Tongan',
+  'tr': 'Turkish',
+  'tk': 'Turkmen',
+  'uk': 'Ukrainian',
+  'hsb': 'Upper Sorbian',
+  'ur': 'Urdu',
+  'ug': 'Uyghur',
+  'uz': 'Uzbek (Latin)',
+  'vi': 'Vietnamese',
+  'cy': 'Welsh',
+  'xh': 'Xhosa',
+  'yo': 'Yoruba',
+  'yua': 'Yucatec Maya',
+  'zu': 'Zulu',
+};
+
+export const CONFIG = {
+  translator: '/translator',
+  ttranslatev3: '/ttranslatev3?isVertical=1&',
+  tlookupv3: '/tlookupv3',
+  correctableLangs: [
+    'da',
+    'en',
+    'nl',
+    'fi',
+    'fr',
+    'fr-CA',
+    'de',
+    'it',
+    'ja',
+    'ko',
+    'no',
+    'pl',
+    'pt',
+    'pt-PT',
+    'ru',
+    'es',
+    'sv',
+    'tr',
+    'zh-Hant',
+    'zh-Hans',
+  ],
+  userAgent:
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 Edg/122.0.0.0',
+};
+
+export const getLangCode = (lang?: string) => {
+  if (!lang || typeof lang !== 'string') {
+    return;
+  }
+
+  if (LANGUAGES[lang]) {
+    return lang;
+  }
+
+  lang = lang.toLowerCase();
+
+  const supportedLangCodes = Object.keys(LANGUAGES);
+
+  for (let i = 0, len = supportedLangCodes.length, code; i < len; i++) {
+    code = supportedLangCodes[i];
+
+    if (code.toLowerCase() === lang || LANGUAGES[code].toLowerCase() === lang) {
+      return code;
+    }
+  }
+};
+
+export const isSupported = (lang?: string) => {
+  return !!getLangCode(lang);
+};
+
+export const isCorrectable = (lang?: string) => {
+  return CONFIG.correctableLangs.includes(getLangCode(lang));
+};
